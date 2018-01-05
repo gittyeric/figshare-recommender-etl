@@ -1,8 +1,6 @@
-import os
-import json
-import rec_formatter
 import bookmark as bmark
 import kafka_output as outputter
+import rec_formatter
 
 
 def main():

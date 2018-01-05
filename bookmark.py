@@ -1,7 +1,7 @@
-import os
-import json
-from datetime import datetime as dt
 import datetime
+import json
+import os
+from datetime import datetime as dt
 
 FIGSHARE_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 

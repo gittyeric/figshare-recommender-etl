@@ -1,7 +1,8 @@
-import requests
 import json
 import multiprocessing
 from multiprocessing.pool import ThreadPool
+
+import requests
 
 multiprocessing.freeze_support()
 
