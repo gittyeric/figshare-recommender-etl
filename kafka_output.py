@@ -1,6 +1,6 @@
 from kafka import KafkaProducer
 
-BOOTSTRAP_SERVERS = "localhost:2130"
+BOOTSTRAP_SERVERS = "localhost:9092"
 TOPIC = "events"
 
 producer = KafkaProducer(bootstrap_servers=BOOTSTRAP_SERVERS)
