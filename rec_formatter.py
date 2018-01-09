@@ -12,7 +12,8 @@ def to_rec_messages(articles):
         for cat in article["categories"]:
             messages.append(to_tsv(["AHasCat", aid, cat["id"]]))
         for tag in article["tags"]:
-            messages.append(to_tsv(["AHasTag", aid, tag]))
+            clean_tag = tag.replace("\t", " ")
+            messages.append(to_tsv(["AHasTag", aid, clean_tag]))
         for ref in article["references"]:
             messages.append(to_tsv(["ARefsA", aid, ref]))
 
