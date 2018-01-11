@@ -15,10 +15,8 @@ def to_rec_messages(articles):
             clean_tag = tag.replace("\t", " ")
             messages.append(to_tsv(["AHasTag", aid, clean_tag]))
         for ref in article["references"]:
-            messages.append(to_tsv(["ARefsA", aid, ref]))
-
-        if len(article["references"]) > 0:
-            print(json.dumps(article["references"], indent=2))
+            clean_ref = ref.replace("\t", " ")
+            messages.append(to_tsv(["ARefsA", aid, clean_ref]))
 
         messages.append(to_tsv(["GroupHasA", article["group_id"], aid]))
 
