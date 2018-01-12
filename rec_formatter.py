@@ -5,7 +5,7 @@ def to_rec_messages(articles):
 
     for article in articles:
         aid = article["id"]
-        if article["files"]:
+        if "files" in article:
             for file in article["files"]:
                 messages.append(to_tsv(["AHasFile", aid, file["id"]]))
         for author in article["authors"]:
