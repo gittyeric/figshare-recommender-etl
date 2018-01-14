@@ -37,6 +37,7 @@ def _fetch_article_by_id(id):
         resp = _send_request(API_URL + "articles/" + str(id), {})
         return _parse_article_from_response(resp)
     except Exception as e:
+        print(e)
         return None
 
 
