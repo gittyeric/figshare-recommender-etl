@@ -19,12 +19,9 @@ def fetch_next_articles(bmark):
         ids = _parse_id_list_from_response(resp)
         articles = _fetch_articles_by_ids(ids)
 
-        # print(json.dumps(articles, indent=2))
-
-        # 3732171, 5721028  5721010  5720983  5720872  5720833  5720779
-        # 5720641  5720593  5720560  5720542
-
-        return articles
+        # Remove erroneous responses
+        actualArticles = [article for article in articles if article is not None]
+        return actualArticles
     except Exception as e:
         print("Error occurred calling api! " + str(e))
         exit(1)
@@ -36,8 +33,11 @@ def _fetch_articles_by_ids(ids):
 
 
 def _fetch_article_by_id(id):
-    resp = _send_request(API_URL + "articles/" + str(id), {})
-    return _parse_article_from_response(resp)
+    try:
+        resp = _send_request(API_URL + "articles/" + str(id), {})
+        return _parse_article_from_response(resp)
+    except Exception as e:
+        return None
 
 
 def _parse_article_from_response(resp):
