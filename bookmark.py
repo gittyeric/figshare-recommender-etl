@@ -41,9 +41,9 @@ class BookMark:
         return self._date_str
 
     def increment1Second(self):
-        nextSecDate = self._dates.str_to_date(self._date_str) + datetime.timedelta(seconds=1)
-        nextSecStr = self._dates.date_to_str(nextSecDate)
-        return BookMark(1, nextSecStr, self._dates)
+        next_sec_date = self._dates.str_to_date(self._date_str) + datetime.timedelta(seconds=1)
+        next_sec_str = self._dates.date_to_str(next_sec_date)
+        return BookMark(1, next_sec_str, self._dates)
 
     def update_from(self, newest_articles):
         newest_date_str = self._dates.article_to_date_str(newest_articles[-1])
