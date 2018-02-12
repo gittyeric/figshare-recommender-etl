@@ -1,10 +1,10 @@
+import api
 import bookmark as bmark
 import kafka_output as outputter
 import rec_formatter
 
 
 def main():
-    import api
 
     bookmark = bmark.load()
 
@@ -12,12 +12,17 @@ def main():
         articles = api.fetch_next_articles(bookmark)
 
         if len(articles) == 0:
-            print("All done for now!")
-            break
-        else:
-            bookmark.update_from(articles)
-            save(articles)
-            print("Saved up to " + bookmark.date_str() + " (page " + str(bookmark.page()) + ")")
+            # Final check, if none after resetting pagination, then we are done
+            bookmark = bookmark.increment1Second()
+            articles = api.fetch_next_articles(bookmark)
+
+            if len(articles) == 0:
+                print("All done for now!")
+                break
+
+        bookmark.update_from(articles)
+        save(articles)
+        print("Saved up to " + bookmark.date_str() + " (page " + str(bookmark.page()) + ")")
 
 
 def save(articles):
