@@ -13,7 +13,7 @@ def main():
 
         if len(articles) == 0:
             # Final check, if none after resetting pagination, then we are done
-            bookmark = bookmark.increment1Second()
+            bookmark = bookmark.increment_1_second()
             articles = api.fetch_next_articles(bookmark)
 
             if len(articles) == 0:

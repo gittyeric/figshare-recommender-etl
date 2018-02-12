@@ -20,8 +20,8 @@ def fetch_next_articles(bmark):
         articles = _fetch_articles_by_ids(ids)
 
         # Remove erroneous responses
-        actualArticles = [article for article in articles if article is not None]
-        return actualArticles
+        actual_articles = [article for article in articles if article is not None]
+        return actual_articles
     except Exception as e:
         print("Error occurred calling api! " + str(e))
         exit(1)
