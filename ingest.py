@@ -21,15 +21,15 @@ def main():
                 break
 
         bookmark.update_from(articles)
-        save(articles)
-        print("Saved up to " + bookmark.date_str() + " (page " + str(bookmark.page()) + ")")
+        save_count = save(articles)
+        print("Saved up to " + bookmark.date_str() + " (page " + str(bookmark.page()) + ") #" + str(save_count))
 
 
 def save(articles):
     rec_messages = rec_formatter.to_rec_messages(articles)
     # print(json.dumps(rec_messages, indent=2))
     outputter.save_messages(rec_messages)
-
+    return len(rec_messages)
 
 if __name__ == '__main__':
     main()
