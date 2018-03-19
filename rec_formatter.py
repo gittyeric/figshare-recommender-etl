@@ -5,13 +5,17 @@ def to_rec_messages(articles):
 
     for article in articles:
         aid = article["id"]
+        if not aid:
+            continue
+
         if "files" in article:
             for file in article["files"]:
                 messages.append(to_tsv(["AHasFile", aid, file["id"]]))
         for author in article["authors"]:
             messages.append(to_tsv(["AuthoredA", author["id"], aid]))
         for cat in article["categories"]:
-            messages.append(to_tsv(["AHasCat", aid, cat["id"]]))
+            if cat["id"]:
+                messages.append(to_tsv(["AHasCat", aid, cat["id"]]))
         for tag in article["tags"]:
             clean_tag = tag.replace("\t", " ")
             messages.append(to_tsv(["AHasTag", aid, clean_tag]))
