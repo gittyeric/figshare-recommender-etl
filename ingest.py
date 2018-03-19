@@ -1,3 +1,4 @@
+import api
 import bookmark as bmark
 import kafka_output as outputter
 import rec_formatter
