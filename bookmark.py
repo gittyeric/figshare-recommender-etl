@@ -40,11 +40,6 @@ class BookMark:
     def date_str(self):
         return self._date_str
 
-    def increment_1_second(self):
-        next_sec_date = self._dates.str_to_date(self._date_str) + datetime.timedelta(seconds=1)
-        next_sec_str = self._dates.date_to_str(next_sec_date)
-        return BookMark(1, next_sec_str, self._dates)
-
     def update_from(self, newest_articles):
         newest_date_str = self._dates.article_to_date_str(newest_articles[-1])
         newest_date = self._dates.str_to_date(newest_date_str)
@@ -59,7 +54,7 @@ class BookMark:
                 self._page += 1
             else:
                 self._page = 1
-                self._date_str = self._dates.date_to_str(newest_date + datetime.timedelta(seconds=1))
+                self._date_str = self._dates.date_to_str(newest_minus_1)
 
         self._save()
 
