@@ -1,8 +1,7 @@
 import json
 import multiprocessing
-from multiprocessing.pool import ThreadPool
-
 import requests
+from multiprocessing.pool import ThreadPool
 
 multiprocessing.freeze_support()
 
@@ -10,7 +9,7 @@ API_URL = 'https://api.figshare.com/v2/'
 TOKEN = '86bbaa5d6d51fc0ae2f2defd3a474dac77ae27179ff6d04dd37e74c531bd6ed059eda584b41356337c362a259e482eb36a34825c805344e0600bb875a77444df'
 HEADERS = {"Authorization": "token " + TOKEN}
 PAGE_SIZE = 100
-REQUEST_POOL = ThreadPool(4)  # Never more than 4 API calls at once
+REQUEST_POOL = ThreadPool(10)  # Never more than REQUEST_POOL API calls at once
 
 
 def fetch_next_articles(bmark):
